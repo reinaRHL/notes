@@ -21,7 +21,9 @@ class Note {
     }
 
     update(note) {
-        return this._note.update(note);
+        let newNote = {};
+        newNote.body = note.body;
+        return this._note.update(newNote);
     }
 
     delete() {
