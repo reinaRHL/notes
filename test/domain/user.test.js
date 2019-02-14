@@ -21,7 +21,7 @@ describe('Tests for domain User', function() {
 
                     return q.all(_.map(_.times(5, n => ({
                         subject: `subject ${ n }`,
-                        body: `body ${ n }`,
+                        body: [`body ${ n }`],
                     })), note => {
                         return user.createNote(note);
                     })).then(notes => {
@@ -134,7 +134,7 @@ describe('Tests for domain User', function() {
             it('should create a new note associated to the user', () => {
                 return domainUser1.createNote({
                     subject: 'new subject',
-                    body: 'new body'
+                    body: ['new body']
                 }).then(createdNote => {
                     return domainUser1.note(createdNote.id).should.be.fulfilled();
                 });

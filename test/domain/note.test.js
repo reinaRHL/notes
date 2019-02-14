@@ -19,7 +19,7 @@ describe('Tests for domain Note', function() {
 
                 return user.createNote({
                     subject: 'some subject',
-                    body: 'some body',
+                    body: ['some body'],
                 }).then(note => {
                     noteId = note.id;
                     domainNote = new domain.Note(note);
@@ -40,7 +40,7 @@ describe('Tests for domain Note', function() {
                 domainNote.expose().should.match({
                     id: noteId,
                     subject: 'some subject',
-                    body: 'some body',
+                    body: ['some body'],
                     updatedAt: _.isDate,
                 });
             });
@@ -54,7 +54,7 @@ describe('Tests for domain Note', function() {
                     domainNote.expose().should.match({
                         id: noteId,
                         subject: 'some subject',
-                        body: 'new body',
+                        body: ['some body', 'new body'],
                         updatedAt: _.isDate,
                     });
                 });
