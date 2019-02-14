@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app').controller('appController', function($rootScope, $location) {
+angular.module('app').controller('appController', function($rootScope, $location, $mdDialog) {
     $rootScope.$on('$routeChangeError', (event, current, previous, rejection) => {
         const status = _.get(rejection, 'status');
         const code = _.get(rejection, 'data.code');
