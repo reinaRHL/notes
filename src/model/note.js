@@ -18,7 +18,7 @@ module.exports.define = sequelize => {
             }
         },
         body: {
-            type: Sequelize.TEXT,
+            type: Sequelize.ARRAY(Sequelize.TEXT),
             allowNull: false,
             validate: {
                 notEmpty: true

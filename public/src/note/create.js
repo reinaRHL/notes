@@ -12,7 +12,7 @@ angular.module('app').component('noteCreate', {
             if (!this.error) {
                 Note.save({
                     subject: this.subject,
-                    body: this.body,
+                    body: [this.body]
                 }).$promise.then(() => {
                     $location.path('/');
                 }).catch(reason => {

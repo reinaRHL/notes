@@ -13,8 +13,18 @@
     <div class="panel-heading">
         <h3 class="panel-title" ng-bind="$ctrl.note.subject"></h3>
     </div>
-
-    <div class="panel-body" style="white-space: pre-wrap;" ng-bind="$ctrl.note.body"></div>
+    <div class="panel-body" style="white-space: pre-wrap;" ng-bind="$ctrl.note.body[$ctrl.note.body.length-1]"></div>
 
     <div class="panel-footer" ng-bind="$ctrl.note.updatedAt | date:'medium'"></div>
 </div>
+<h5> <center>Previous Versions</center></h5>
+<hr class="hr">
+<ul class="list-unstyled">
+  <section layout="row" layout-sm="column" layout-align="center center" layout-wrap="">
+    <li ng-repeat="item in $ctrl.note.body | orderBy:'$index':true" ng-hide="$first">
+      <md-button class="verBtn" ng-click="$ctrl.showAlert($event, $ctrl.note.body.length-$index, item)"   >
+            Version {{$ctrl.note.body.length-$index}}
+      </md-button>
+    </li>
+    </section>
+</ul>
